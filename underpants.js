@@ -21,6 +21,10 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value){
+    return value;
+}
+
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +46,25 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value) {
+    if (typeof value === string) {
+        return "string";
+    } else if (typeof value === number) {
+        return "number";
+    } else if (typeof value === boolean) {
+        return "boolean";
+    } else if (typeof value === 'function') {
+        return "function";
+    } else if (typeof value === null) {
+        return "null";
+    } else if (typeof value === undefined) {
+        return "undefined";
+    } else if (Array.isArray(value) === true) {
+        return "array"
+    } else {
+        return "object"
+    }
+}
 
 /** _.first
 * Arguments:
@@ -156,7 +179,17 @@ var _ = {};
 *   _.filter([1,2,3,4,5], function(x){return x%2 === 0}) -> [2,4]
 * Extra Credit:
 *   use _.each in your implementation
+I: function takes in an array and a function
+O: function returns a new array of elements for which calling the input funcition was true
 */
+
+
+_.filter = function(array, func) {
+
+
+};
+
+console.log(_.filter([1,2,3,4,5], function(x){x % 2 === 0}));[2,4]
 
 
 /** _.reject
@@ -207,7 +240,23 @@ var _ = {};
 *   3) return the new array
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
-*/
+*//
+/*
+_.map = function(collection, func){
+    const output = []
+    //determine if collection is Array or an Object
+if (Array.isArray(collection)) {
+    for (var i = 0; i < collection.length; i++) {
+        // invoke callback on each item in array and save in new
+        output.push(func(collection[i], i, collection))
+    } else {
+
+    }
+}
+
+};
+
+return output;
 
 
 /** _.pluck
