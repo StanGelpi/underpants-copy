@@ -22,7 +22,7 @@ var _ = {};
 */
 
 _.identity = function(value){
-    return value;
+   return value;
 }
 
 
@@ -47,22 +47,22 @@ _.identity = function(value){
 */
 
 _.typeOf = function(value) {
-    if (typeof value === string) {
+    if (typeof value === 'string') {
         return "string";
-    } else if (typeof value === number) {
+    } else if (typeof value === 'number') {
         return "number";
-    } else if (typeof value === boolean) {
+    } else if (typeof value === 'boolean') {
         return "boolean";
     } else if (typeof value === 'function') {
         return "function";
-    } else if (typeof value === null) {
-        return "null";
-    } else if (typeof value === undefined) {
+    } else if (typeof value === 'undefined') {
         return "undefined";
+    } else if (value === null) {
+        return "null";
     } else if (Array.isArray(value) === true) {
-        return "array"
+        return "array";
     } else {
-        return "object"
+        return "object";
     }
 }
 
@@ -84,6 +84,17 @@ _.typeOf = function(value) {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(array, number) {
+    if (Array.isArray(array) === false || number < 0) {
+        return [];
+    } else if (number > array.length) {
+        return array;
+    } else if (number === undefined || number === null) {
+        return array[0];
+    } else  {
+        return array.slice(0, number);
+    }
+}
 
 /** _.last
 * Arguments:
@@ -103,7 +114,18 @@ _.typeOf = function(value) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
-
+_.last = function(array, number) {
+    if (Array.isArray(array) === false || number < 0){
+        return [];
+    } else if (number > array.length) {
+        return array;
+    } else if (number === undefined || number === null) {
+        return array.length - 1;
+    } else {
+        return array.slice(number, array.length - 1);
+    }
+}
+EventListener. 
 /** _.indexOf
 * Arguments:
 *   1) An array
@@ -240,7 +262,7 @@ console.log(_.filter([1,2,3,4,5], function(x){x % 2 === 0}));[2,4]
 *   3) return the new array
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
-*//
+*/
 /*
 _.map = function(collection, func){
     const output = []
@@ -354,8 +376,8 @@ return output;
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-if((typeof process !== 'undefined') &&
-   (typeof process.versions.node !== 'undefined')) {
+//if((typeof process !== 'undefined') &&
+ //  (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
-    module.exports = _;
-}
+ //   module.exports = _;
+///88}
